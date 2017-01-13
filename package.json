@@ -18,15 +18,15 @@
     "url": "http://github.com/nw/stream-rotate/issues/"
   },
   "dependencies": {
-    "mkdirp": "0.3.5",
-    "moment": "2.0.0"
+    "mkdirp": "^0.5.1",
+    "moment": "^2.17.1"
   },
   "devDependencies": {
-    "array.prototype.find": "^2.0.0",
-    "mocha": "1.9.0",
-    "mock-fs": "^3.8.0",
-    "randomstring": "1.1.4",
-    "should": "1.2.2"
+    "array.prototype.find": "^2.0.1",
+    "mocha": "^3.2.0",
+    "mock-fs": "^3.12.1",
+    "randomstring": "^1.1.5",
+    "should": "^11.1.2"
   },
   "license": [
     {

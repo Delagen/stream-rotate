@@ -12,7 +12,7 @@ describe('Utilities', function(){
   
   it('should convert to bytes', function(){
     should.not.exist(util.getBytes());
-    util.getBytes(1).should.be.a('number');
+    util.getBytes(1).should.be.a.number;
     util.getBytes(430).should.equal(430);
     util.getBytes('1k').should.equal(1024);
     util.getBytes('.5k').should.equal(512);
