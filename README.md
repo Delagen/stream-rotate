@@ -20,7 +20,7 @@ var rotator = require('stream-rotate');
 logstream = rotator({
     path: '/logs'
   , name: 'myapp'
-  , size: '1m'
+  , size: '1Mi'
   , retention: 2
   });
   
@@ -92,22 +92,12 @@ When a current log file is no longer valid (too big or old) then it is moved. Th
   extension for the log file (default: 'log')
   
 ##### size
-  Accepts {Number} or {String}. If string, it must start with a number and have one of the following characters appended.
-  
-  - `k`: converts to kilobyte(s)
-  - `m`: converts to megabyte(s)
-  - `g`: coverts to gigabyte(s)
+  Accepts {Number} or {String}. If string, it must start with a number and have one of the unit character.
+  See [`human-format`](https://github.com/JsCommunity/human-format) `binary` scale for possible values
 
 ##### freq
-  Accepts a {Number} or {String}. If string, it must start with a number ahnd have one of the following characters appended:
-  
-  - `s`: sets unit to second(s)
-  - `m`: sets unit to minutes(s)
-  - `h`: sets unit to hour(s)
-  - `d`: sets unit to day(s)
-  - `w`: sets unit to week(s)
-  - `M`: sets unit to month(s)
-  - `y`: sets unit to year(s)
+  Accepts a {Number} or {String}. If string, it must start with a number and have one of the time unit
+  See [`moment`](https://momentjs.com/docs/#/durations/creating/) for available units.
 
 __note__: if {Number} expected unit is in seconds.
 
