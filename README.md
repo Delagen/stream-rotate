@@ -80,7 +80,7 @@ When a current log file is no longer valid (too big or old) then it is moved. Th
   - `encoding`: {Mixed} (default: null)
   - `mode`: {Number} (default: 0600)
   - `ts_format`: {String} (default: 'DDMMYY_HHmmss')
-  - `boundary`: {String} (default:null choices:['daily','hourly','minutely','secondly'])
+  - `boundary`: {String} (default:null choices:['day','hour','minute','second'])
 
 ##### path
   Directory to store log files.

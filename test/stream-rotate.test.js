@@ -58,19 +58,19 @@ describe('Rotator', function(){
   it('should rotate based on time');
 
   it('should rotate daily', function(done){
-    executeTest(this,2000,path,'daily',300,50,10,100,86401,done);
+    executeTest(this,2000,path,'day',300,50,10,100,86401,done);
   });
 
   it('should rotate hourly', function(done){
-    executeTest(this,2000,path,'hourly',2000,300,10,100,3601,done); 
+    executeTest(this,2000,path,'hour',2000,300,10,100,3601,done);
   });
 
   it('should rotate minutely', function(done){
-    executeTest(this,2000,path,'minutely',2000,300,3,100,61,done); 
+    executeTest(this,2000,path,'minute',2000,300,3,100,61,done);
   });
 
   it('should rotate secondly', function(done){
-    executeTest(this,10000,path,'secondly',100000,300,200,100,2,done); 
+    executeTest(this,10000,path,'second',100000,300,200,100,2,done);
   });
 
   it('should not delete previous content', function(done){
@@ -82,7 +82,7 @@ describe('Rotator', function(){
       freq: '1d',
       retention: 3,
       size: 1000000,
-      boundary: 'daily'
+      boundary: 'day'
     };
     var r = new rotator(options);
     r.on('rotated-on', function(x) {
@@ -115,7 +115,7 @@ describe('Rotator', function(){
       freq: '1d',
       retention: 3,
       size: 20,
-      boundary: 'hourly'
+      boundary: 'hour'
     };
     var r = new rotator(options);
     (function() {
@@ -133,7 +133,7 @@ describe('Rotator', function(){
 
       retention: 20,
       size: 20,
-      boundary: 'hourly'
+      boundary: 'hour'
     };
     if(!isDebug) {
       done();
@@ -217,7 +217,7 @@ function executeTest(self,timeout,filepath,testType,testSize,bufferSize,iteratio
     retention: retention,
     size: testSize
   };
-  if(testType==='daily' || testType==='hourly' || testType==='minutely' || testType==='secondly')
+  if(testType==='day' || testType==='hour' || testType==='minute' || testType==='second')
     options.boundary = testType;
   var r = new rotator(options);
   r.should.be.an.instanceof(rotator);
@@ -264,13 +264,13 @@ function executeTest(self,timeout,filepath,testType,testSize,bufferSize,iteratio
           totalWriten.should.equal(results.totalSize);
         if(testType==='retention')
           results.totalCount.should.equal(retention + 1);
-        if(testType==='daily')
+        if(testType==='day')
           timeSpread.should.be.greaterThan(86400000);
-        if(testType==='hourly')
+        if(testType==='hour')
           timeSpread.should.be.greaterThan(360000);
-        if(testType==='minutely')
+        if(testType==='minute')
           timeSpread.should.be.greaterThan(60000);
-        if(testType==='secondly')
+        if(testType==='second')
           timeSpread.should.be.greaterThan(1000);
         return setTimeout(done,10);
       });
